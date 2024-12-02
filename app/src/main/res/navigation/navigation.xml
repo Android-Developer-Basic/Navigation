@@ -21,5 +21,17 @@
             android:name="recipeId"
             app:argType="integer"
             android:defaultValue="-1" />
+        <action
+            android:id="@+id/action_recipeFragment_to_deleteConfirmation"
+            app:destination="@id/deleteConfirmation"
+            app:popUpTo="@id/recipeFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/deleteConfirmation"
+        android:name="ru.otus.cookbook.ui.DeleteConfirmationFragment"
+        android:label="DeleteConfirmation" >
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </dialog>
 </navigation>

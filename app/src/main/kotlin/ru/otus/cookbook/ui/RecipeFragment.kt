@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.MutableCreationExtras
@@ -42,6 +44,7 @@ class RecipeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupAppBar()
+        setupAlertResult()
         viewLifecycleOwner.lifecycleScope.launch {
             model.recipe
                 .flowWithLifecycle(viewLifecycleOwner.lifecycle)
@@ -58,7 +61,7 @@ class RecipeFragment : Fragment() {
 
     private fun setupAppBar() = binding.withBinding {
         topAppBar.setNavigationOnClickListener {
-            findNavController().popBackStack()
+            close()
         }
         topAppBar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
@@ -71,6 +74,39 @@ class RecipeFragment : Fragment() {
         }
     }
 
+    private fun close() {
+        findNavController().popBackStack()
+    }
+
+    /**
+     * Sets up alert dialog for delete result.
+     * https://developer.android.com/guide/navigation/use-graph/programmatic#returning_a_result
+     */
+    private fun setupAlertResult() {
+        val navBackStackEntry = findNavController().getBackStackEntry(R.id.recipeFragment)
+
+        val observer = object : DefaultLifecycleObserver {
+            override fun onResume(owner: LifecycleOwner) {
+                if (navBackStackEntry.savedStateHandle.contains(DeleteConfirmationFragment.CONFIRMATION_RESULT)) {
+                    if (true == navBackStackEntry.savedStateHandle.get<Boolean>(DeleteConfirmationFragment.CONFIRMATION_RESULT)) {
+                        Log.d(TAG, "Deleting recipe $recipeId")
+                        model.delete()
+                        close()
+                    }
+                    navBackStackEntry.savedStateHandle.remove<Boolean>(DeleteConfirmationFragment.CONFIRMATION_RESULT)
+                }
+            }
+        }
+
+        navBackStackEntry.lifecycle.addObserver(observer)
+
+        viewLifecycleOwner.lifecycle.addObserver(object : DefaultLifecycleObserver {
+            override fun onDestroy(owner: LifecycleOwner) {
+                navBackStackEntry.lifecycle.removeObserver(observer)
+            }
+        })
+    }
+
     private fun displayRecipe(recipe: Recipe) = binding.withBinding {
         title.text = recipe.title
         steps.text = recipe.steps.joinToString("\n")
@@ -78,10 +114,12 @@ class RecipeFragment : Fragment() {
 
     private fun deleteRecipe() {
         Log.d(TAG, "Deleting recipe $recipeId")
-        //model.delete()
+        findNavController().navigate(
+            RecipeFragmentDirections.actionRecipeFragmentToDeleteConfirmation(getTitle())
+        )
     }
 
     companion object {
-        const val TAG = "RecipeFragment"
+        private const val TAG = "RecipeFragment"
     }
 }

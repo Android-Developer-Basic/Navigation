@@ -2,4 +2,8 @@
     <string name="app_name">Cookbook</string>
     <string name="delete">Delete</string>
     <string name="content_add_recipe">Add recipe</string>
+    <string name="title_delete">Delete?</string>
+    <string name="text_delete">Are you sure you want to delete %s?</string>
+    <string name="btn_ok">OK</string>
+    <string name="btn_cancel">Cancel</string>
 </resources>
