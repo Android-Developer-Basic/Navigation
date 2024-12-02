@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Cookbook</string>
+    <string name="delete">Delete</string>
+    <string name="content_add_recipe">Add recipe</string>
 </resources>

@@ -1,6 +1,7 @@
 package ru.otus.cookbook.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,11 @@ class CookbookFragment : Fragment() {
 
     private val binding = FragmentBindingDelegate<FragmentCookbookBinding>(this)
     private val model: CookbookFragmentViewModel by viewModels { CookbookFragmentViewModel.Factory }
+
+    private val adapter = RecipeAdapter { id ->
+        Log.d(TAG, "Recipe clicked: $id")
+        // TODO Navigate to recipe details
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,10 +43,14 @@ class CookbookFragment : Fragment() {
     }
 
     private fun setupRecyclerView() = binding.withBinding {
-        // Setup RecyclerView
+        recipes.adapter = adapter
     }
 
     private fun onRecipeListUpdated(recipeList: List<RecipeListItem>) {
-        // Handle recipe list
+        adapter.submitList(recipeList)
+    }
+
+    companion object {
+        const val TAG = "CookbookFragment"
     }
 }
