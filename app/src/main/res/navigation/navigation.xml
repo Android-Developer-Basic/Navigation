@@ -7,5 +7,19 @@
     <fragment
         android:id="@+id/cookbookFragment"
         android:name="ru.otus.cookbook.ui.CookbookFragment"
-        android:label="CookbookFragment" />
+        android:label="CookbookFragment" >
+        <action
+            android:id="@+id/action_cookbookFragment_to_recipeFragment"
+            app:destination="@id/recipeFragment"
+            app:popUpTo="@id/cookbookFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recipeFragment"
+        android:name="ru.otus.cookbook.ui.RecipeFragment"
+        android:label="RecipeFragment" >
+        <argument
+            android:name="recipeId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
 </navigation>
