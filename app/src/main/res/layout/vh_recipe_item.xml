@@ -28,15 +28,53 @@
 
     <TextView
         android:id="@+id/title"
-        style="?attr/textAppearanceHeadline3"
+        style="?attr/textAppearanceHeadline4"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_small"
         android:layout_marginEnd="@dimen/margin_small"
         android:ellipsize="end"
         android:maxLines="1"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/description"
+        app:layout_constraintEnd_toStartOf="@+id/cardForImageViewRecipe"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/cardForImageViewRecipe"
+        app:layout_constraintVertical_chainStyle="packed"
         tools:text="Vodka and herring" />
+
+    <TextView
+        android:id="@+id/description"
+        style="?attr/textAppearanceHeadline6"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_small"
+        android:layout_marginEnd="@dimen/margin_small"
+        android:ellipsize="end"
+        android:maxLines="1"
+        app:layout_constraintBottom_toBottomOf="@+id/cardForImageViewRecipe"
+        app:layout_constraintEnd_toStartOf="@+id/cardForImageViewRecipe"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        tools:text="Vodka and herring" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardForImageViewRecipe"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars">
+
+        <ImageView
+            android:id="@+id/imageViewRecipe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/recipe_image"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/avatars" />
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

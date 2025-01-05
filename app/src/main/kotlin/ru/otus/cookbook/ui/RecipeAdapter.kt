@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.bumptech.glide.Glide
 import ru.otus.cookbook.data.RecipeListItem
 import ru.otus.cookbook.databinding.VhRecipeCategoryBinding
 import ru.otus.cookbook.databinding.VhRecipeItemBinding
@@ -51,6 +52,10 @@ class RecipeAdapter(private val onClick: (Int) -> Unit) : ListAdapter<RecipeList
                 this@RecipeHolder.id = recipe.id
                 id.text = String.format(Locale.getDefault(), "%02d", recipe.id)
                 title.text = recipe.title
+                description.text = recipe.description
+                Glide.with(itemView.context)
+                    .load(recipe.imageUrl)
+                    .into(imageViewRecipe)
             }
         }
 

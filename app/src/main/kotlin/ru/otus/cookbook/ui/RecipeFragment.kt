@@ -13,6 +13,7 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.MutableCreationExtras
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import kotlinx.coroutines.launch
 import ru.otus.cookbook.R
 import ru.otus.cookbook.data.Recipe
@@ -107,6 +108,9 @@ class RecipeFragment : Fragment() {
         }
 
         private fun displayRecipe(recipe: Recipe) = binding.withBinding {
+            Glide.with(requireContext())
+                .load(recipe.imageUrl)
+                .into(imageViewRecipe)
             title.text = recipe.title
             steps.text = recipe.steps.joinToString("\n")
         }
