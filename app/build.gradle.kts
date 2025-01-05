@@ -37,6 +37,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.github.glide)
     implementation(libs.kotlin.coroutines.core)
     implementation(libs.kotlin.coroutines.android)
     implementation(libs.androidx.core.ktx)
