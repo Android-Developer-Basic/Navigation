@@ -7,6 +7,11 @@ import ru.otus.cookbook.R
  * Recipe list items.
  */
 sealed class RecipeListItem : WithLayoutId {
+
+    // See RecipeAdapter.kt
+    abstract fun isSame(other: RecipeListItem): Boolean
+    abstract fun isContentSame(other: RecipeListItem): Boolean
+
     /**
      * Recipe item.
      */
@@ -15,11 +20,16 @@ sealed class RecipeListItem : WithLayoutId {
             @get:LayoutRes
             override val layoutId: Int = R.layout.vh_recipe_item
         }
-
         val id: Int get() = recipe.id
         val title: String get() = recipe.title
         val description: String get() = recipe.description
         val imageUrl: String get() = recipe.imageUrl
+
+        override fun isSame(other: RecipeListItem): Boolean = id == (other as? RecipeItem)?.id
+        override fun isContentSame(other: RecipeListItem): Boolean {
+            if (other !is RecipeItem) return false
+            return title == other.title && description == other.description && imageUrl == other.imageUrl
+        }
     }
 
     /**
@@ -32,5 +42,8 @@ sealed class RecipeListItem : WithLayoutId {
         }
 
         val name: String get() = category.name
+
+        override fun isSame(other: RecipeListItem): Boolean = name == (other as? CategoryItem)?.name
+        override fun isContentSame(other: RecipeListItem): Boolean = name == (other as? CategoryItem)?.name
     }
 }
