@@ -28,7 +28,7 @@ sealed class RecipeListItem : WithLayoutId {
     data class CategoryItem(val category: RecipeCategory) : RecipeListItem(), WithLayoutId by CategoryItem {
         companion object : WithLayoutId {
             @get:LayoutRes
-            override val layoutId: Int = R.layout.vh_recipe_category
+            override val layoutId: Int = R.layout.vh_recipe_item
         }
 
         val name: String get() = category.name

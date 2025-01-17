@@ -5,7 +5,9 @@
     android:id="@+id/cardRecipe"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    card_view:cardCornerRadius="15dp">
+    card_view:cardCornerRadius="15dp"
+    android:foreground="@drawable/border_card"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -58,9 +60,9 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/imageRecipe"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:id="@+id/imageRecipeView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:contentDescription="@string/media"
             android:src="@drawable/media" />
