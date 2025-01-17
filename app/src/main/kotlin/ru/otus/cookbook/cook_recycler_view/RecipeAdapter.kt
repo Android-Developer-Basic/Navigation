@@ -13,17 +13,15 @@ class RecipeAdapter : ListAdapter<RecipeListItem, RecyclerView.ViewHolder>(Recip
 
         return when (viewType) {
             ViewType.CATEGORY.id -> {
-                CategoryViewHolder(
-                    LayoutInflater.from(parent.context)
-                        .inflate(R.layout.vh_recipe_category, parent, false)
-                )
+                val view = LayoutInflater.from(parent.context)
+                    .inflate(R.layout.vh_recipe_category, parent, false)
+                CategoryViewHolder(view)
             }
 
             ViewType.RECIPE.id -> {
-                RecipeViewHolder(
-                    LayoutInflater.from(parent.context)
-                        .inflate(R.layout.vh_recipe_item, parent, false)
-                )
+                val view = LayoutInflater.from(parent.context)
+                    .inflate(R.layout.vh_recipe_item, parent, false)
+                RecipeViewHolder(view)
             }
 
             else -> throw IllegalArgumentException("wrong type of view")

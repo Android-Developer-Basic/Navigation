@@ -15,7 +15,10 @@ class RecipeViewHolder(private val recipeView: View) : RecyclerView.ViewHolder(r
     private val description: TextView by lazy { recipeView.findViewById(R.id.titleDescription) }
     private val imageRecipe: ImageView by lazy { recipeView.findViewById(R.id.imageRecipe) }
 
+
     fun bind(recipeData: RecipeListItem.RecipeItem) {
+        recipeView.setOnClickListener { RecipeTouchHelper().onRcViewItemClick(recipeData.id) }
+
         title.text = recipeData.title
         description.text = recipeData.description
 

@@ -10,11 +10,13 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.ItemTouchHelper
 import kotlinx.coroutines.launch
 import ru.otus.cookbook.cook_recycler_view.RecipeAdapter
 import ru.otus.cookbook.data.RecipeListItem
 import ru.otus.cookbook.databinding.FragmentCookbookBinding
 import ru.otus.cookbook.R
+import ru.otus.cookbook.cook_recycler_view.RecipeTouchHelper
 
 class CookbookFragment : Fragment() {
 
