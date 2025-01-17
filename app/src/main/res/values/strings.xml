@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Cookbook</string>
+    <string name="media">media</string>
+    <string name="description">description</string>
+    <string name="title">Title</string>
+    <string name="c">C</string>
 </resources>
