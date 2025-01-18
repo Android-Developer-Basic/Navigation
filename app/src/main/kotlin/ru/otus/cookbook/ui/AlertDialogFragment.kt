@@ -1,11 +1,13 @@
 package ru.otus.cookbook.ui
 
+import ru.otus.cookbook.R
 import android.app.Dialog
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import ru.otus.cookbook.helpers.NavigateHelper
+
 
 class AlertDialogFragment : DialogFragment() {
     private val args: AlertDialogFragmentArgs by navArgs()
@@ -22,7 +24,7 @@ class AlertDialogFragment : DialogFragment() {
                 return@setNegativeButton
             }
             setPositiveButton("OK") { _, _ ->
-
+                NavigateHelper.onDelete()
             }
         }
         return builder?.create()!!

@@ -55,7 +55,7 @@ class RecipeFragment : Fragment() {
 
         val materialToolbar = view.findViewById<MaterialToolbar>(R.id.titleToolbar)
         materialToolbar.setOnMenuItemClickListener {
-            NavigateHelper.showAlertDialogOnRecipeFragment(getTitle())
+            NavigateHelper.showAlertDialogOnRecipeFragment(getTitle(), this)
             true
         }
     }
@@ -82,6 +82,10 @@ class RecipeFragment : Fragment() {
                 .load(recipe.imageUrl)
                 .into(imageRecipe)
         }
+    }
+
+    fun onAlertDialogDelete() {
+        deleteRecipe()
     }
 
     private fun deleteRecipe() {
