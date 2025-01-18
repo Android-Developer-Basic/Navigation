@@ -1,21 +1,26 @@
 package ru.otus.cookbook.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.MutableCreationExtras
+import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.launch
+import ru.otus.cookbook.R
 import ru.otus.cookbook.data.Recipe
 import ru.otus.cookbook.databinding.FragmentRecipeBinding
 
 class RecipeFragment : Fragment() {
 
-    private val recipeId: Int get() = TODO("Use Safe Args to get the recipe ID: https://developer.android.com/guide/navigation/use-graph/pass-data#Safe-args")
+    private val recipeId: Int get() = RecipeFragmentArgs.fromBundle(requireArguments()).recipeId
 
     private val binding = FragmentBindingDelegate<FragmentRecipeBinding>(this)
     private val model: RecipeFragmentViewModel by viewModels(
@@ -38,6 +43,8 @@ class RecipeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupAppBar()
+        setupAlertResult()
         viewLifecycleOwner.lifecycleScope.launch {
             model.recipe
                 .flowWithLifecycle(viewLifecycleOwner.lifecycle)
@@ -52,11 +59,67 @@ class RecipeFragment : Fragment() {
         return model.recipe.value.title
     }
 
-    private fun displayRecipe(recipe: Recipe) {
-        // Display the recipe
+    private fun setupAppBar() = binding.withBinding {
+        topAppBar.setNavigationOnClickListener {
+            close()
+        }
+        topAppBar.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.action_delete -> {
+                    deleteRecipe()
+                    true
+                }
+                else -> false
+            }
+        }
+    }
+
+    private fun close() {
+        findNavController().popBackStack()
+    }
+
+    /**
+     * Sets up alert dialog for delete result.
+     * https://developer.android.com/guide/navigation/use-graph/programmatic#returning_a_result
+     */
+    private fun setupAlertResult() {
+        val navBackStackEntry = findNavController().getBackStackEntry(R.id.recipeFragment)
+
+        val observer = object : DefaultLifecycleObserver {
+            override fun onResume(owner: LifecycleOwner) {
+                if (navBackStackEntry.savedStateHandle.contains(DeleteConfirmationFragment.CONFIRMATION_RESULT)) {
+                    if (true == navBackStackEntry.savedStateHandle.get<Boolean>(DeleteConfirmationFragment.CONFIRMATION_RESULT)) {
+                        Log.d(TAG, "Deleting recipe $recipeId")
+                        model.delete()
+                        close()
+                    }
+                    navBackStackEntry.savedStateHandle.remove<Boolean>(DeleteConfirmationFragment.CONFIRMATION_RESULT)
+                }
+            }
+        }
+
+        navBackStackEntry.lifecycle.addObserver(observer)
+
+        viewLifecycleOwner.lifecycle.addObserver(object : DefaultLifecycleObserver {
+            override fun onDestroy(owner: LifecycleOwner) {
+                navBackStackEntry.lifecycle.removeObserver(observer)
+            }
+        })
+    }
+
+    private fun displayRecipe(recipe: Recipe) = binding.withBinding {
+        title.text = recipe.title
+        steps.text = recipe.steps.joinToString("\n")
     }
 
     private fun deleteRecipe() {
-        model.delete()
+        Log.d(TAG, "Deleting recipe $recipeId")
+        findNavController().navigate(
+            RecipeFragmentDirections.actionRecipeFragmentToDeleteConfirmation(getTitle())
+        )
+    }
+
+    companion object {
+        private const val TAG = "RecipeFragment"
     }
 }
