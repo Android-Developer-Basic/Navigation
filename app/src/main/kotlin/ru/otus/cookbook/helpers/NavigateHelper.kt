@@ -3,6 +3,8 @@ package ru.otus.cookbook.helpers
 import android.annotation.SuppressLint
 import androidx.navigation.NavController
 import ru.otus.cookbook.ui.CookbookFragmentDirections
+import ru.otus.cookbook.ui.RecipeFragmentDirections
+
 
 object NavigateHelper {
 
@@ -14,13 +16,13 @@ object NavigateHelper {
     }
 
     fun showMoreAboutRecipe(id: Int) {
-        val action = CookbookFragmentDirections.Companion.actionCookbookFragmentToRecipeFragment(id)
+        val action = CookbookFragmentDirections.actionCookbookFragmentToRecipeFragment(id)
         _navController?.navigate(action)
     }
 
-    fun showAlertDialogOnRecipeFragment(id: Int) {
-
-    _navController?.navigate("alertDialogFragment")
+    fun showAlertDialogOnRecipeFragment(recipeName: String) {
+        val action = RecipeFragmentDirections.actionRecipeFragmentToAlertDialogDialogFragment(recipeName)
+        _navController?.navigate(action)
     }
 }
 

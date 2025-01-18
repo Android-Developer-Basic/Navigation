@@ -56,7 +56,7 @@ class RecipeFragment : Fragment() {
 
         val materialToolbar = view.findViewById<MaterialToolbar>(R.id.titleToolbar)
         materialToolbar.setOnMenuItemClickListener {
-            NavigateHelper.showAlertDialogOnRecipeFragment(this.recipeId)
+            NavigateHelper.showAlertDialogOnRecipeFragment(getTitle())
             openDialog()
             true
         }

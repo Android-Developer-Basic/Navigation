@@ -35,7 +35,18 @@
             android:name="recipeId"
             app:argType="integer"
             android:defaultValue="1" />
+        <action
+            android:id="@+id/action_recipeFragment_to_alertDialogDialogFragment"
+            app:destination="@id/alertDialogDialogFragment" />
     </fragment>
 
+    <dialog
+        android:id="@+id/alertDialogDialogFragment"
+        android:name="ru.otus.cookbook.ui.AlertDialogFragment"
+        android:label="AlertDialogDialogFragment">
+        <argument
+            android:name="recipeName"
+            app:argType="string" />
+    </dialog>
 
 </navigation>
