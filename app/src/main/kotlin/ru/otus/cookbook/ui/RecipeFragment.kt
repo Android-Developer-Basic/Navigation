@@ -11,7 +11,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.MutableCreationExtras
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.google.android.material.appbar.MaterialToolbar
@@ -57,7 +56,6 @@ class RecipeFragment : Fragment() {
         val materialToolbar = view.findViewById<MaterialToolbar>(R.id.titleToolbar)
         materialToolbar.setOnMenuItemClickListener {
             NavigateHelper.showAlertDialogOnRecipeFragment(getTitle())
-            openDialog()
             true
         }
     }
@@ -67,10 +65,6 @@ class RecipeFragment : Fragment() {
      */
     private fun getTitle(): String {
         return model.recipe.value.title
-    }
-
-    private fun openDialog() {
-        println()
     }
 
     private fun displayRecipe(recipe: Recipe) {

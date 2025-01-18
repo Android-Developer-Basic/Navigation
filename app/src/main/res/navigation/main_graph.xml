@@ -30,11 +30,11 @@
     <fragment
         android:id="@+id/recipeFragment"
         android:name="ru.otus.cookbook.ui.RecipeFragment"
-        android:label="RecipeFragment" >
+        android:label="RecipeFragment">
         <argument
             android:name="recipeId"
-            app:argType="integer"
-            android:defaultValue="1" />
+            android:defaultValue="1"
+            app:argType="integer" />
         <action
             android:id="@+id/action_recipeFragment_to_alertDialogDialogFragment"
             app:destination="@id/alertDialogDialogFragment" />

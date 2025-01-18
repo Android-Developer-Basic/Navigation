@@ -5,7 +5,6 @@ import androidx.navigation.NavController
 import ru.otus.cookbook.ui.CookbookFragmentDirections
 import ru.otus.cookbook.ui.RecipeFragmentDirections
 
-
 object NavigateHelper {
 
     @SuppressLint("StaticFieldLeak")
@@ -16,12 +15,14 @@ object NavigateHelper {
     }
 
     fun showMoreAboutRecipe(id: Int) {
-        val action = CookbookFragmentDirections.actionCookbookFragmentToRecipeFragment(id)
+        val action =
+            CookbookFragmentDirections.actionCookbookFragmentToRecipeFragment(recipeId = id)
         _navController?.navigate(action)
     }
 
     fun showAlertDialogOnRecipeFragment(recipeName: String) {
-        val action = RecipeFragmentDirections.actionRecipeFragmentToAlertDialogDialogFragment(recipeName)
+        val action =
+            RecipeFragmentDirections.actionRecipeFragmentToAlertDialogDialogFragment(recipeName)
         _navController?.navigate(action)
     }
 }

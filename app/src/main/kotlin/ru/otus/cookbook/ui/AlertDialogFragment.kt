@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import ru.otus.cookbook.helpers.NavigateHelper
 
 class AlertDialogFragment : DialogFragment() {
     private val args: AlertDialogFragmentArgs by navArgs()
@@ -17,11 +18,11 @@ class AlertDialogFragment : DialogFragment() {
         builder?.apply {
             setTitle("Delete")
             setMessage("Are you sure you want to delete $recipeName ?")
-            setNegativeButton("Cancel") { dialog, which ->
+            setNegativeButton("Cancel") { _, _ ->
                 return@setNegativeButton
             }
-            setPositiveButton("OK") { dialog, which ->
-                // Respond to positive button press
+            setPositiveButton("OK") { _, _ ->
+
             }
         }
         return builder?.create()!!
