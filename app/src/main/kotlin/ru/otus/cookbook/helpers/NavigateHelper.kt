@@ -1,11 +1,10 @@
-package ru.otus.cookbook.cook_recycler_view
+package ru.otus.cookbook.helpers
 
 import android.annotation.SuppressLint
 import androidx.navigation.NavController
 import ru.otus.cookbook.ui.CookbookFragmentDirections
 
-
-object RecipeTouchHelper {
+object NavigateHelper {
 
     @SuppressLint("StaticFieldLeak")
     private var _navController: NavController? = null
@@ -14,10 +13,14 @@ object RecipeTouchHelper {
         _navController = navController
     }
 
-    fun onRcViewItemClick(id: Int) {
+    fun showMoreAboutRecipe(id: Int) {
         val action = CookbookFragmentDirections.Companion.actionCookbookFragmentToRecipeFragment(id)
         _navController?.navigate(action)
+    }
 
+    fun showAlertDialogOnRecipeFragment(id: Int) {
+
+    _navController?.navigate("alertDialogFragment")
     }
 }
 

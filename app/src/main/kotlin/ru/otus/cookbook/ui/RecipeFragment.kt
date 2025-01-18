@@ -11,12 +11,15 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.MutableCreationExtras
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.google.android.material.appbar.MaterialToolbar
 import kotlinx.coroutines.launch
 import ru.otus.cookbook.R
 import ru.otus.cookbook.data.Recipe
 import ru.otus.cookbook.databinding.FragmentRecipeBinding
+import ru.otus.cookbook.helpers.NavigateHelper
 
 class RecipeFragment : Fragment() {
 
@@ -43,11 +46,19 @@ class RecipeFragment : Fragment() {
     )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         super.onViewCreated(view, savedInstanceState)
         viewLifecycleOwner.lifecycleScope.launch {
             model.recipe
                 .flowWithLifecycle(viewLifecycleOwner.lifecycle)
                 .collect(::displayRecipe)
+        }
+
+        val materialToolbar = view.findViewById<MaterialToolbar>(R.id.titleToolbar)
+        materialToolbar.setOnMenuItemClickListener {
+            NavigateHelper.showAlertDialogOnRecipeFragment(this.recipeId)
+            openDialog()
+            true
         }
     }
 
@@ -56,6 +67,10 @@ class RecipeFragment : Fragment() {
      */
     private fun getTitle(): String {
         return model.recipe.value.title
+    }
+
+    private fun openDialog() {
+        println()
     }
 
     private fun displayRecipe(recipe: Recipe) {

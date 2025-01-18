@@ -5,6 +5,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import ru.otus.cookbook.helpers.NavigateHelper
 
 import ru.otus.cookbook.R
 import ru.otus.cookbook.data.RecipeListItem
@@ -17,7 +18,7 @@ class RecipeViewHolder(private val recipeView: View) : RecyclerView.ViewHolder(r
 
 
     fun bind(recipeData: RecipeListItem.RecipeItem) {
-        recipeView.setOnClickListener { RecipeTouchHelper.onRcViewItemClick(recipeData.id) }
+        recipeView.setOnClickListener { NavigateHelper.showMoreAboutRecipe(recipeData.id) }
 
         title.text = recipeData.title
         description.text = recipeData.description

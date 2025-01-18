@@ -36,4 +36,6 @@
             app:argType="integer"
             android:defaultValue="1" />
     </fragment>
+
+
 </navigation>

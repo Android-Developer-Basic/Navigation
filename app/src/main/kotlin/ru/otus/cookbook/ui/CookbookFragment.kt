@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import kotlinx.coroutines.launch
 import ru.otus.cookbook.R
 import ru.otus.cookbook.cook_recycler_view.RecipeAdapter
-import ru.otus.cookbook.cook_recycler_view.RecipeTouchHelper
+import ru.otus.cookbook.helpers.NavigateHelper
 import ru.otus.cookbook.data.RecipeListItem
 import ru.otus.cookbook.databinding.FragmentCookbookBinding
 
@@ -46,7 +46,7 @@ class CookbookFragment : Fragment() {
     private fun setupRecyclerView() = binding.withBinding {
 
         val navController = findNavController()
-        RecipeTouchHelper.setNavController(navController)
+        NavigateHelper.setNavController(navController)
 
         cardRecipesRcView.adapter = recipeAdapter
 
