@@ -10,7 +10,7 @@ class AlertDialogDialogFragment : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val builder = activity?.let { AlertDialog.Builder(it) }
         builder?.setTitle("title")
-        builder?.setMessage("masage")
+        builder?.setMessage("message")
         return builder?.create()!!
     }
 }
