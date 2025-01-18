@@ -17,7 +17,7 @@ class RecipeViewHolder(private val recipeView: View) : RecyclerView.ViewHolder(r
 
 
     fun bind(recipeData: RecipeListItem.RecipeItem) {
-        recipeView.setOnClickListener { RecipeTouchHelper().onRcViewItemClick(recipeData.id) }
+        recipeView.setOnClickListener { RecipeTouchHelper.onRcViewItemClick(recipeData.id) }
 
         title.text = recipeData.title
         description.text = recipeData.description

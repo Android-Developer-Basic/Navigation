@@ -9,14 +9,14 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.ItemTouchHelper
 import kotlinx.coroutines.launch
+import ru.otus.cookbook.R
 import ru.otus.cookbook.cook_recycler_view.RecipeAdapter
+import ru.otus.cookbook.cook_recycler_view.RecipeTouchHelper
 import ru.otus.cookbook.data.RecipeListItem
 import ru.otus.cookbook.databinding.FragmentCookbookBinding
-import ru.otus.cookbook.R
-import ru.otus.cookbook.cook_recycler_view.RecipeTouchHelper
 
 class CookbookFragment : Fragment() {
 
@@ -44,6 +44,10 @@ class CookbookFragment : Fragment() {
     }
 
     private fun setupRecyclerView() = binding.withBinding {
+
+        val navController = findNavController()
+        RecipeTouchHelper.setNavController(navController)
+
         cardRecipesRcView.adapter = recipeAdapter
 
         val divider = DividerItemDecoration(this@CookbookFragment.context,DividerItemDecoration.VERTICAL)

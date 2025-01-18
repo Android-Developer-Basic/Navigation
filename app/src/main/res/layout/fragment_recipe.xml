@@ -1,6 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayoutCod"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/titleToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:navigationIcon="@drawable/baseline_arrow_back_24"
+            app:title="Cod" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ImageView
+        android:id="@+id/imageRecipeOnAbout"
+        android:layout_width="380dp"
+        android:layout_height="380dp"
+        android:layout_gravity="center"
+        android:contentDescription="@string/media"
+        android:scaleType="fitCenter"
+        android:layout_margin="16dp"
+        android:src="@drawable/media"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayoutCod" />
+
+    <TextView
+        android:id="@+id/nameRecipe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/cod"
+        android:textSize="32sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageRecipeOnAbout" />
+
+    <TextView
+        android:id="@+id/typeRecipe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/roasted_in_breadcrumbs"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameRecipe" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/typeRecipe">
+
+        <TextView
+            android:id="@+id/descriptionRecipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/lorem_ipsum_quisque_blandit_dolor_vel_ullamcorper_fringilla_etiam_ut_ultricies_nibh_maecenas_sit_amet_ipsum_at_felis_convallis_luctus_praesent_at_urna_ac_massa_eleifend_iaculis_donec_at_venenatis_metus_donec_malesuada_sapien_eget_neque_finibus_vel_aliquam_mi_lacinia_mauris_a_sem_elementum_pretium_diam_nec_luctus_neque_praesent_lacinia_imperdiet_erat_eget_feugiat_mi_feugiat_ut_proin_iaculis_massa_eu_lacinia_tempor_dui_lacus_pellentesque_dui_ut_dapibus_tellus_purus_at_augue_nam_sagittis_lobortis_justo_vel_porta_proin_vel_vulputate_quam_vivamus_at_vestibulum_est_phasellus_a_arcu_lacus_interdum_et_malesuada_fames_ac_ante_ipsum_primis_in_faucibus_nullam_elit_mauris_pharetra_vitae_libero_sit_amet_efficitur_rhoncus_mauris"
+            android:textSize="24sp" />
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

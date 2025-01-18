@@ -4,17 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
     app:startDestination="@id/cookbookFragment">
+
     <fragment
         android:id="@+id/cookbookFragment"
         android:name="ru.otus.cookbook.ui.CookbookFragment"
         android:label="CookbookFragment">
         <action
-            android:id="@+id/action_cookbookFragment4_to_mainActivity5"
+            android:id="@+id/action_cookbookFragment_to_mainActivity"
             app:destination="@id/mainActivity" />
+        <action
+            android:id="@+id/action_cookbookFragment_to_recipeFragment"
+            app:destination="@id/recipeFragment" />
     </fragment>
+
     <activity
         android:id="@+id/mainActivity"
         android:name="ru.otus.cookbook.MainActivity"
         android:label="activity_main"
         tools:layout="@layout/activity_main" />
+
+    <fragment
+        android:id="@+id/recipeFragment"
+        android:name="ru.otus.cookbook.ui.RecipeFragment"
+        android:label="RecipeFragment" >
+        <argument
+            android:name="recipeId"
+            app:argType="integer"
+            android:defaultValue="1" />
+    </fragment>
 </navigation>
