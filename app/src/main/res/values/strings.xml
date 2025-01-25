@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Cookbook</string>
+    <string name="cookbook_content_is_not_visible">Cookbook content is not visible</string>
+    <string name="delete">Delete</string>
+    <string name="are_you_sure_you_wand_to_delete">Are you sure you wand to delete %1$s?</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
 </resources>

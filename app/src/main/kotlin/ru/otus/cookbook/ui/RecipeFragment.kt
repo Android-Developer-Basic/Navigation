@@ -6,16 +6,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.MutableCreationExtras
+import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.launch
+import ru.otus.cookbook.R
 import ru.otus.cookbook.data.Recipe
 import ru.otus.cookbook.databinding.FragmentRecipeBinding
 
 class RecipeFragment : Fragment() {
 
-    private val recipeId: Int get() = TODO("Use Safe Args to get the recipe ID: https://developer.android.com/guide/navigation/use-graph/pass-data#Safe-args")
+    private val recipeId: Int get() = RecipeFragmentArgs.fromBundle(requireArguments()).recipeId
 
     private val binding = FragmentBindingDelegate<FragmentRecipeBinding>(this)
     private val model: RecipeFragmentViewModel by viewModels(
@@ -43,6 +49,42 @@ class RecipeFragment : Fragment() {
                 .flowWithLifecycle(viewLifecycleOwner.lifecycle)
                 .collect(::displayRecipe)
         }
+        binding.withBinding {
+            recipeMenuBar.setNavigationOnClickListener {
+                findNavController().popBackStack()
+            }
+            recipeMenuBar.setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.delete -> {
+                        val action = RecipeFragmentDirections.actionRecipeFragmentToDeleteDialogFragment(getTitle())
+                        findNavController().navigate(action)
+                        true
+                    }
+                    else -> false
+                }
+            }
+        }
+
+        val navBackStackEntry = findNavController().getBackStackEntry(R.id.recipeFragment)
+
+        val observer = LifecycleEventObserver { _, event ->
+            if (event == Lifecycle.Event.ON_RESUME
+                && navBackStackEntry.savedStateHandle.contains(DeleteDialogFragment.CONFIRMATION_RESULT)) {
+                val isConfirmed = navBackStackEntry.savedStateHandle.get<Boolean>(DeleteDialogFragment.CONFIRMATION_RESULT) ?: false;
+                if (isConfirmed) {
+                    deleteRecipe()
+                    findNavController().popBackStack()
+                }
+            }
+        }
+
+        navBackStackEntry.lifecycle.addObserver(observer)
+
+        viewLifecycleOwner.lifecycle.addObserver(LifecycleEventObserver { _, event ->
+            if (event == Lifecycle.Event.ON_DESTROY) {
+                navBackStackEntry.lifecycle.removeObserver(observer)
+            }
+        })
     }
 
     /**
@@ -52,8 +94,10 @@ class RecipeFragment : Fragment() {
         return model.recipe.value.title
     }
 
-    private fun displayRecipe(recipe: Recipe) {
-        // Display the recipe
+    private fun displayRecipe(recipe: Recipe) = binding.withBinding {
+        title.text = recipe.title
+        desc.text = recipe.description
+        steps.text = recipe.steps.joinToString("\n")
     }
 
     private fun deleteRecipe() {
