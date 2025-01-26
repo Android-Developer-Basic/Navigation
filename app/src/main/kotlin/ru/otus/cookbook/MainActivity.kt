@@ -5,7 +5,6 @@ import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import ru.otus.cookbook.databinding.ActivityMainBinding
-import ru.otus.cookbook.ui.CookbookFragment
 
 class MainActivity : AppCompatActivity() {
 
