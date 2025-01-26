@@ -22,7 +22,7 @@ import ru.otus.cookbook.databinding.FragmentRecipeBinding
 class RecipeFragment : Fragment() {
 
     private val args: RecipeFragmentArgs by navArgs()
-    private val recipeId: Int get() = args.recipeId  // Теперь у вас есть recipeId //= TODO("Use Safe Args to get the recipe ID: https://developer.android.com/guide/navigation/use-graph/pass-data#Safe-args")
+    private val recipeId: Int get() = args.recipeId  // Теперь у вас есть recipeId // ("Use Safe Args to get the recipe ID: https://developer.android.com/guide/navigation/use-graph/pass-data#Safe-args")
 
     private val binding = FragmentBindingDelegate<FragmentRecipeBinding>(this)
     private val model: RecipeFragmentViewModel by viewModels(
