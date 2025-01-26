@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">Cookbook</string>
+    <string name="recipe_image">Recipe image</string>
+    <string name="unknown_view_type">Unknown view type</string>
+    <string name="close">Close</string>
+    <string name="cookbook">Cookbook</string>
+    <string name="search">Search</string>
+    <string name="first_caps">First Caps</string>
+    <string name="bc">BC</string>
+    <string name="title">Title</string>
+    <string name="short_description">Description</string>
+    <string name="full_description">Full Description</string>
+    <string name="recipe">Recipe</string>
+    <string name="back">Back</string>
+    <string name="close_application">Close Application</string>
+    <string name="are_you_sure_you_want_to_exit">Are you sure you want to exit?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="query">Query: %1$s</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="delete_recipe_message">Are you sure you want to delete %1$s?</string>
+    <string name="delete_recipe_title">Delete</string>
 </resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Прозрачный фон -->
+    <solid android:color="?attr/colorSecondaryVariant" />
+
+    <!-- Обводка -->
+    <stroke
+        android:color="?attr/colorSecondaryVariant"
+    android:width="2dp" />
+
+    <!-- Закруглённые углы -->
+    <corners
+        android:bottomRightRadius="16dp"
+        android:topRightRadius="16dp"
+ />
+</shape>
