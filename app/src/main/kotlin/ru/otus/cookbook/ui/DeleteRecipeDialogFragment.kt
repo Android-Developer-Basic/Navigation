@@ -13,8 +13,6 @@ class DeleteRecipeDialogFragment : DialogFragment() {
 
     companion object {
         const val CONFIRMATION_RESULT = "confirmation_result"
-//        const val IS_DELETED = "isDeleted"
-//        const val DELETE_RECIPE_RESULT = "DELETE_RECIPE_RESULT"
     }
 
     private val args: DeleteRecipeDialogFragmentArgs by navArgs()
@@ -25,9 +23,6 @@ class DeleteRecipeDialogFragment : DialogFragment() {
             .setTitle(getString(R.string.delete_recipe_title))
             .setMessage(getString(R.string.delete_recipe_message, recipeTitle))
             .setPositiveButton(R.string.ok) { _, _ ->
-//                setFragmentResult(DELETE_RECIPE_RESULT, Bundle().apply {
-//                    putBoolean(IS_DELETED, true)
-//                })
                     dismiss()
                     setResult(true)
                 }
@@ -38,21 +33,6 @@ class DeleteRecipeDialogFragment : DialogFragment() {
             )
             .create()
     }
-
-
-
-//    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog =
-//        AlertDialog.Builder(requireContext())
-//            .setMessage(message)
-//            .setPositiveButton(getString(android.R.string.ok)) { _, _ ->
-//                dismiss()
-//                setResult(true)
-//            }
-//            .setNegativeButton(getString(android.R.string.cancel)) { _, _ ->
-//                dismiss()
-//                setResult(false)
-//            }
-//            .create()
 
     private fun setResult(result: Boolean) {
         findNavController().previousBackStackEntry?.savedStateHandle?.set(

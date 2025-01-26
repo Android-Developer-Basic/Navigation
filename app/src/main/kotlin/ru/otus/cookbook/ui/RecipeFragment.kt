@@ -55,55 +55,12 @@ class RecipeFragment : Fragment() {
                 findNavController().navigateUp()
             })
             btnDelete.setOnClickListener({
-//                val dialog = MaterialAlertDialogBuilder(requireContext())
-//                    .setTitle("Delete Recipe " + getTitle())
-//                    .setMessage("Are you sure you want to delete this recipe?")
-//                    .setPositiveButton("OK") { dialogInterface, _ ->
-//                        deleteRecipe()
-//                        dialogInterface.dismiss() // Закрывает диалог явно
-//                        findNavController().navigateUp()
-//                    }
-//                    .setNegativeButton("Cancel") { dialogInterface, _ ->
-//                        dialogInterface.dismiss() // Закрывает диалог явно
-//                    }
-//                    .create()
-//
-//                dialog.show()
-
                 val argTitle = getTitle()
                 val action = RecipeFragmentDirections
                     .actionRecipeFragmentToDeleteRecipeDialogFragment(argTitle)
                 findNavController().navigate(action)
-
-//                val options = NavOptions.Builder()
-//                    .setLaunchSingleTop(true)
-//                    .build()
-//                findNavController().navigate(action, options)
-
             })
         }
-
-//        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<Boolean>(DeleteRecipeDialogFragment.DELETE_RECIPE_RESULT)?.observe(viewLifecycleOwner) {
-//            isDeleted ->
-//                if (isDeleted == true) {
-//                    lifecycleScope.launch {
-//                        deleteRecipe()
-//                        findNavController().navigateUp()
-//                    }
-//                }
-//        }
-
-//        findNavController().currentBackStackEntry?.savedStateHandle
-//            ?.getLiveData<Boolean>(DeleteRecipeDialogFragment.DELETE_RECIPE_RESULT)
-//            ?.observe(viewLifecycleOwner) { isDeleted ->
-//                Log.d("RecipeFragment", "Result received: isDeleted = $isDeleted")
-//                if (isDeleted == true) {
-//                    lifecycleScope.launch {
-//                        deleteRecipe()
-//                        findNavController().navigateUp()
-//                    }
-//                }
-//            }
         setupAlertResult()
     }
 
@@ -126,8 +83,6 @@ class RecipeFragment : Fragment() {
         // Загружаем изображение рецепта
         Glide.with(this@RecipeFragment)
             .load(recipe.imageUrl)
-            //.placeholder(R.drawable.placeholder_image) // Плейсхолдер на случай загрузки
-            //.error(R.drawable.error_image) // Изображение на случай ошибки
             .transform(NormalizeAndRoundedCornersTransformation(
                 requireContext(),16, 0,
                 NormalizeAndRoundedCornersTransformation.CornerType.ALL))
