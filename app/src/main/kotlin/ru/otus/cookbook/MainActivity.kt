@@ -15,13 +15,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        // Проверка, чтобы фрагмент не добавлялся заново при пересоздании активности
-//        if (savedInstanceState == null) {
-//            supportFragmentManager.beginTransaction()
-//                .replace(R.id.fragment_container, CookbookFragment())  // Добавляем фрагмент в контейнер
-//                .commit()
-//        }
-
         onBackPressedDispatcher.addCallback(this) {
             if (!findNavController(R.id.fragment_container_view).popBackStack()) {
                 finish()
