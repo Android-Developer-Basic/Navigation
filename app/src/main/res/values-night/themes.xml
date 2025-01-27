@@ -1,7 +1,19 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
-    <style name="Base.Theme.Coocbook" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.Cookbook" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+
+        <!-- Primary colors -->
+        <item name="colorPrimary">@color/colorDarkPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorDarkPrimaryVariant</item>
+        <item name="colorOnPrimary">@color/colorDarkOnPrimary</item>
+
+        <!-- Secondary colors -->
+        <item name="colorSecondary">@color/colorDarkSecondary</item>
+        <item name="colorSecondaryVariant">@color/colorDarkSecondaryVariant</item>
+        <item name="colorOnSecondary">@color/colorDarkOnSecondary</item>
     </style>
+
+
 </resources>
