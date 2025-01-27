@@ -14,7 +14,7 @@
     <color name="colorOnSecondary">#a0a0a0</color> <!-- Text color on secondary background -->
 
     <!-- Dark Theme Colors -->
-    <color name="colorDarkPrimary">#1f2a36</color> <!-- Darker blue for header and primary elements -->
+    <color name="colorDarkPrimary">#EADDFF</color> <!-- Darker blue for header and primary elements -->
     <color name="colorDarkPrimaryVariant">#0c1520</color> <!-- Even darker shade for status bars or darker elements -->
     <color name="colorDarkOnPrimary">#ffffff</color> <!-- Text color on dark primary background -->
 
