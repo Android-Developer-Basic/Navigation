@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Cookbook</string>
+    <string name="card_item_image">Card item image</string>
+    <string name="delete_dialog_title">Delete recipe</string>
+    <string name="delete_dialog_message">Do you really want to delete %1$s recipe?</string>
+    <string name="ok_btn">OK</string>
+    <string name="cancel_btn">Cancel</string>
+    <string name="close_app_message">Are you sure to want to close the application? </string>
+    <string name="yes_btn">Yes</string>
+    <string name="no_btn">No</string>
+
 </resources>
