@@ -1,7 +1,6 @@
 package ru.otus.cookbook.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -79,7 +78,7 @@ class RecipeFragment : Fragment() {
                     R.id.delete_recipe -> {
                         val navController = findNavController()
                         val action = RecipeFragmentDirections.actionRecipeToDialogDelete(getTitle())
-                        findNavController().navigate(action)
+                        navController.navigate(action)
                         true
                     }
 

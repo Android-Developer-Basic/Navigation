@@ -45,7 +45,7 @@ class CookbookAdapter(
         else -> throw IllegalArgumentException("View is not supported")
     }
 
-    override fun onBindViewHolder(holder: CookbookAdapter.CookbookViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CookbookViewHolder, position: Int) {
         when (holder) {
             is CookbookViewHolder.CategoryHolder -> holder.bind(getItem(position) as RecipeListItem.CategoryItem)
             is CookbookViewHolder.RecipeHolder -> holder.bind(getItem(position) as RecipeListItem.RecipeItem)

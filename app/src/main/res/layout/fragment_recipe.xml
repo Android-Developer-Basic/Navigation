@@ -60,7 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/default_image_bg_light"
-                android:contentDescription="@string/Recipe_image_description"
+                android:contentDescription="@string/recipe_image_description"
                 android:src="@drawable/category_xxx_width"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"

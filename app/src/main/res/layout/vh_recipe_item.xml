@@ -48,6 +48,7 @@
                 android:layout_width="@dimen/cookbook_card_height"
                 android:layout_height="@dimen/cookbook_card_height"
                 android:background="@color/default_image_bg_light"
+                android:contentDescription="@string/recipe_image_description"
                 android:scaleType="centerCrop"
                 android:src="@drawable/category_80dp"
                 app:layout_constraintBottom_toBottomOf="parent"
