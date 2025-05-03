@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="recipe_recipe_name">32sp</dimen>
+    <dimen name="recipe_recipe_padding_bottom">10dp</dimen>
+    <dimen name="recipe_recipe_description">24sp</dimen>
+    <dimen name="recipe_recipe_steps">24sp</dimen>
+    <dimen name="category_name">36sp</dimen>
+    <dimen name="cookbook_card_height">80dp</dimen>
+    <dimen name="cookbook_card_avatar_diameter">40dp</dimen>
+    <dimen name="cookbook_avatar_text_size">16sp</dimen>
+</resources>

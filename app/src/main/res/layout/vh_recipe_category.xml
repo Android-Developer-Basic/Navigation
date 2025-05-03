@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -8,18 +9,20 @@
         android:id="@+id/txt_category_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Category placeholder"
-        android:textSize="36sp"
+        android:text="@string/category_placeholder"
+        android:textSize="@dimen/category_name"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
 
         />
 
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:id="@+id/rec_recipe_in_category"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/txt_category_name" />-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rec_recipe_in_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/txt_category_name"
+        tools:itemCount="3"
+        tools:listitem="@layout/vh_recipe_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

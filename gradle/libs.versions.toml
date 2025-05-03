@@ -1,23 +1,25 @@
 [versions]
 agp = "8.7.3"
+glideVersion = "4.16.0"
 kotlin = "2.1.0"
-coreKtx = "1.15.0"
-fragmentKtx = "1.8.5"
+coreKtx = "1.16.0"
+fragmentKtx = "1.8.6"
 lifecycleKtx = "2.8.7"
-navigation = "2.8.5"
+navigation = "2.8.9"
 junit = "4.13.2"
 appcompat = "1.7.0"
 material = "1.12.0"
-activity = "1.9.3"
-constraintlayout = "2.2.0"
+activity = "1.10.1"
+constraintlayout = "2.2.1"
 coroutines = "1.9.0"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 serialization = "1.7.3"
-datastore = "1.1.1"
+datastore = "1.1.5"
 
 
 [libraries]
+github-glide = { module = "com.github.bumptech.glide:glide", version.ref = "glideVersion" }
 kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 kotlin-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 kotlin-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }

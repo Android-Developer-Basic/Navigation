@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/fragment_cookbook">
+
+    <fragment
+
+        android:id="@+id/fragment_cookbook"
+        android:name="ru.otus.cookbook.ui.CookbookFragment"
+        android:label="CookbookFragment"
+        tools:layout="@layout/fragment_cookbook">
+        <action
+            android:id="@+id/action_cookbook_to_recipe"
+            app:destination="@id/fragment_recipe"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_recipe"
+        android:name="ru.otus.cookbook.ui.RecipeFragment"
+        android:label="RecipeFragment"
+        tools:layout="@layout/fragment_recipe">
+        <argument
+            android:name="recipe_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_recipe_to_dialog_delete"
+            app:destination="@id/dialog_delete" />
+        <action
+            android:id="@+id/action_recipe_to_cookbook"
+            app:destination="@id/fragment_cookbook"
+            app:enterAnim="@anim/slide_in_left" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/dialog_delete"
+        android:name="ru.otus.cookbook.ui.DialogFragmentDelete"
+        android:label="dialog_delete">
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_dialog_delete_to_cookbook"
+            app:destination="@id/fragment_cookbook" />
+    </dialog>
+
+</navigation>

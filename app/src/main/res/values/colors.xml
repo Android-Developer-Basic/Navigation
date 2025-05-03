@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="top_bar_background_light">#F3EDF7</color>
+    <color name="default_image_bg_light">#DADCE0</color>
+
+    <color name="cookbook_card_bg_light">#F3EDF7</color>
 </resources>
