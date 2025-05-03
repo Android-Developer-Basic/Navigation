@@ -7,4 +7,5 @@
     <color name="default_image_bg_light">#DADCE0</color>
 
     <color name="cookbook_card_bg_light">#F3EDF7</color>
+    <color name="color_on_primary_container">#4F378A</color>
 </resources>

@@ -6,7 +6,6 @@
     app:startDestination="@id/fragment_cookbook">
 
     <fragment
-
         android:id="@+id/fragment_cookbook"
         android:name="ru.otus.cookbook.ui.CookbookFragment"
         android:label="CookbookFragment"
@@ -15,7 +14,10 @@
             android:id="@+id/action_cookbook_to_recipe"
             app:destination="@id/fragment_recipe"
             app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left" />
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+
+            />
     </fragment>
 
     <fragment

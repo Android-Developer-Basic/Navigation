@@ -18,8 +18,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintRight_toRightOf="parent"
-
-
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.Guideline
@@ -31,25 +29,21 @@
 
             <TextView
                 android:id="@+id/txt_recipe_avatar"
+                style="@style/Cookbook.Card.Avatar"
                 android:layout_width="@dimen/cookbook_card_avatar_diameter"
                 android:layout_height="@dimen/cookbook_card_avatar_diameter"
-                android:layout_margin="10dp"
                 android:background="@drawable/circle_background"
-                android:fontFamily="monospace"
-                android:gravity="center"
-                android:text="@string/cookbook_avatar_placeholder"
-                android:textSize="@dimen/cookbook_avatar_text_size"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/img_recipe_image"
+                style="Cookbook.Card.RecipeImage"
                 android:layout_width="@dimen/cookbook_card_height"
                 android:layout_height="@dimen/cookbook_card_height"
                 android:background="@color/default_image_bg_light"
                 android:contentDescription="@string/recipe_image_description"
-                android:scaleType="centerCrop"
                 android:src="@drawable/category_80dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -59,28 +53,22 @@
 
             <TextView
                 android:id="@+id/txt_recipe_name"
+                style="@style/Cookbook.Card.RecipeName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="5dp"
-                android:ellipsize="end"
-                android:lines="1"
-                android:text="@string/recipe_name_placeholder"
-                android:textSize="16sp"
-                android:textStyle="bold"
+                android:layout_marginLeft="@dimen/cookbook_recipe_name_margin_side"
+                android:layout_marginRight="@dimen/cookbook_recipe_name_margin_side"
+                android:layout_marginBottom="@dimen/cookbook_recipe_name_margin_bottom"
                 app:layout_constraintBottom_toTopOf="@id/guideline_recipe"
                 app:layout_constraintLeft_toRightOf="@id/txt_recipe_avatar"
                 app:layout_constraintRight_toLeftOf="@id/img_recipe_image" />
 
             <TextView
                 android:id="@+id/txt_recipe_description"
+                style="@style/Cookbook.Card.RecipeDescription"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:ellipsize="end"
-                android:lines="1"
-                android:text="@string/recipe_description_placeholder"
+                android:layout_marginTop="@dimen/cookbook_recipe_description_margin_top"
                 app:layout_constraintLeft_toLeftOf="@id/txt_recipe_name"
                 app:layout_constraintRight_toRightOf="@id/txt_recipe_name"
                 app:layout_constraintTop_toTopOf="@id/guideline_recipe" />

@@ -8,4 +8,9 @@
     <dimen name="cookbook_card_height">80dp</dimen>
     <dimen name="cookbook_card_avatar_diameter">40dp</dimen>
     <dimen name="cookbook_avatar_text_size">16sp</dimen>
+    <dimen name="cookbook_avatar_margin">10dp</dimen>
+    <dimen name="cookbook_recipe_name_text_size">16sp</dimen>
+    <dimen name="cookbook_recipe_name_margin_side">10dp</dimen>
+    <dimen name="cookbook_recipe_name_margin_bottom">5dp</dimen>
+    <dimen name="cookbook_recipe_description_margin_top">5dp</dimen>
 </resources>

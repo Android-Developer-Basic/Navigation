@@ -14,5 +14,6 @@
     <string name="delete_dialog_negative_button">No</string>
     <string name="cookbook_avatar_placeholder">C</string>
     <string name="menu_delete">delete</string>
+    <string name="cookbook_avatar_font_family">monospace</string>
 
 </resources>
