@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Cookbook" />
+
+    <style name="Cookbook.Card" />
+
+    <style name="Cookbook.Card.RecipeImage">
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:src">@drawable/category_80dp</item>
+    </style>
+
+    <style name="Cookbook.Card.RecipeName">
+        <item name="android:ellipsize">end</item>
+        <item name="android:lines">1</item>
+        <item name="android:text">@string/recipe_name_placeholder</item>
+        <item name="android:textSize">@dimen/cookbook_recipe_name_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Cookbook.Card.RecipeDescription">
+        <item name="android:ellipsize">end</item>
+        <item name="android:lines">1</item>
+        <item name="android:text">@string/recipe_description_placeholder</item>
+    </style>
+
+    <style name="Cookbook.Card.Avatar">
+        <item name="android:layout_margin">@dimen/cookbook_avatar_margin</item>
+        <item name="fontFamily">@string/cookbook_avatar_font_family</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/color_on_primary_container</item>
+        <item name="android:text">@string/cookbook_avatar_placeholder</item>
+        <item name="android:textSize">@dimen/cookbook_avatar_text_size</item>
+    </style>
+
+</resources>

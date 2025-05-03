@@ -1,6 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp">
 
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/cookbook_card_height"
+        android:backgroundTint="@color/cookbook_card_bg_light"
+        app:cardCornerRadius="12dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_recipe"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <TextView
+                android:id="@+id/txt_recipe_avatar"
+                style="@style/Cookbook.Card.Avatar"
+                android:layout_width="@dimen/cookbook_card_avatar_diameter"
+                android:layout_height="@dimen/cookbook_card_avatar_diameter"
+                android:background="@drawable/circle_background"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/img_recipe_image"
+                style="Cookbook.Card.RecipeImage"
+                android:layout_width="@dimen/cookbook_card_height"
+                android:layout_height="@dimen/cookbook_card_height"
+                android:background="@color/default_image_bg_light"
+                android:contentDescription="@string/recipe_image_description"
+                android:src="@drawable/category_80dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+
+            <TextView
+                android:id="@+id/txt_recipe_name"
+                style="@style/Cookbook.Card.RecipeName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/cookbook_recipe_name_margin_side"
+                android:layout_marginRight="@dimen/cookbook_recipe_name_margin_side"
+                android:layout_marginBottom="@dimen/cookbook_recipe_name_margin_bottom"
+                app:layout_constraintBottom_toTopOf="@id/guideline_recipe"
+                app:layout_constraintLeft_toRightOf="@id/txt_recipe_avatar"
+                app:layout_constraintRight_toLeftOf="@id/img_recipe_image" />
+
+            <TextView
+                android:id="@+id/txt_recipe_description"
+                style="@style/Cookbook.Card.RecipeDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/cookbook_recipe_description_margin_top"
+                app:layout_constraintLeft_toLeftOf="@id/txt_recipe_name"
+                app:layout_constraintRight_toRightOf="@id/txt_recipe_name"
+                app:layout_constraintTop_toTopOf="@id/guideline_recipe" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

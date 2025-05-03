@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Cookbook</string>
+    <string name="cookbook_bar_title">Cookbook</string>
+    <string name="recipe_name_placeholder">Recipe name placeholder</string>
+    <string name="recipe_image_description">A recipe image</string>
+    <string name="recipe_description_placeholder">Recipe Description placeholder</string>
+    <string name="recipe_recipe_steps_placeholder">Recipe steps Lorem ipsum Quisque blandit dolor vel ullamcorper fringilla. Etiam ut ultricies nibh. Maecenas sit amet ipsum at felis convallis luctus. Praesent at urna ac massa eleifend iaculis. Donec at venenatis metus. Donec malesuada sapien eget neque finibus, vel aliquam mi lacinia. Mauris a sem elementum, pretium diam nec, luctus neque. Praesent lacinia imperdiet erat, eget feugiat mi feugiat ut. Proin iaculis, massa eu lacinia tempor, dui lacus pellentesque dui, ut dapibus tellus purus at augue. Nam sagittis lobortis justo vel porta. Proin vel vulputate quam. Vivamus at vestibulum est. Phasellus a arcu lacus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam elit mauris, pharetra vitae libero sit amet, efficitur rhoncus mauris.</string>
+    <string name="category_placeholder">Category placeholder</string>
+
+
+    <string name="delete_dialog_title">Delete %s recipe</string>
+    <string name="delete_dialog_message">Are you sure you want to delete the "%s" recipe?</string>
+    <string name="delete_dialog_positive_button">Yes</string>
+    <string name="delete_dialog_negative_button">No</string>
+    <string name="cookbook_avatar_placeholder">C</string>
+    <string name="menu_delete">delete</string>
+    <string name="cookbook_avatar_font_family">monospace</string>
+
 </resources>
