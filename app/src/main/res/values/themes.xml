@@ -6,4 +6,12 @@
     </style>
 
     <style name="Theme.Cookbook" parent="Base.Theme.Cookbook" />
+
+    <style name="AppToolbarStyle" parent="Widget.Material3.Toolbar">
+        <item name="titleTextColor">@color/black</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:background">@color/background_toolbar</item>
+    </style>
+
 </resources>
