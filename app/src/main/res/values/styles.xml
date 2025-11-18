@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppBarLayoutStyle" parent="Widget.Material3.AppBarLayout">
+        <item name="android:background">?attr/colorSurface</item>
+    </style>
+    <style name="AppBarStyle" parent="Widget.Material3.Toolbar.OnSurface">
+        <item name="android:background">?attr/colorSurfaceContainer</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+</resources>
