@@ -3,6 +3,7 @@ package ru.otus.cookbook
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import ru.otus.cookbook.databinding.ActivityMainBinding
+import ru.otus.cookbook.ui.CookbookFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,5 +13,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.cookbook_fragment_container, CookbookFragment())
+            .setReorderingAllowed(true)
+            .commit()
     }
 }
