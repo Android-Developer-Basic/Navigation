@@ -9,13 +9,19 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.MutableCreationExtras
+import androidx.navigation.fragment.navArgs
+import coil3.load
+import coil3.request.error
+import coil3.request.placeholder
 import kotlinx.coroutines.launch
+import ru.otus.cookbook.R
 import ru.otus.cookbook.data.Recipe
 import ru.otus.cookbook.databinding.FragmentRecipeBinding
 
 class RecipeFragment : Fragment() {
 
-    private val recipeId: Int get() = TODO("Use Safe Args to get the recipe ID: https://developer.android.com/guide/navigation/use-graph/pass-data#Safe-args")
+    private val args: RecipeFragmentArgs by navArgs()
+    private val recipeId: Int get() = args.recipeId
 
     private val binding = FragmentBindingDelegate<FragmentRecipeBinding>(this)
     private val model: RecipeFragmentViewModel by viewModels(
@@ -54,6 +60,15 @@ class RecipeFragment : Fragment() {
 
     private fun displayRecipe(recipe: Recipe) {
         // Display the recipe
+        binding.withBinding {
+            recipeImage.load(recipe.imageUrl) {
+                placeholder(R.drawable.ic_android_placeholder)
+                error(R.drawable.ic_android_placeholder)
+            }
+            recipeTitle.text = recipe.title
+            recipeDescription.text = recipe.description
+            recipeSteps.text = recipe.steps.toString()
+        }
     }
 
     private fun deleteRecipe() {
