@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/cookbookFragment"
         android:name="ru.otus.cookbook.ui.CookbookFragment"
-        android:label="CookbookFragment"
+        android:label="Cookbook"
         tools:layout="@layout/fragment_cookbook">
         <action
             android:id="@+id/action_cookbookFragment_to_recipeFragment"
@@ -22,11 +22,23 @@
     <fragment
         android:id="@+id/recipeFragment"
         android:name="ru.otus.cookbook.ui.RecipeFragment"
-        android:label="RecipeFragment"
+        android:label="Recipe"
         tools:layout="@layout/fragment_recipe" >
         <argument
             android:name="recipeId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_recipeFragment_to_confirmationDialog"
+            app:destination="@id/confirmationDialog" />
     </fragment>
+    <dialog
+        android:id="@+id/confirmationDialog"
+        android:name="ru.otus.cookbook.ConfirmationDialog"
+        android:label="fragment_confirmation_dialog"
+        tools:layout="@layout/fragment_confirmation_dialog" >
+        <argument
+            android:name="recipeTitle"
+            app:argType="string" />
+    </dialog>
 
 </navigation>
