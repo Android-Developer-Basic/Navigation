@@ -9,13 +9,17 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
+import ru.otus.cookbook.R
 import ru.otus.cookbook.data.RecipeListItem
 import ru.otus.cookbook.databinding.FragmentCookbookBinding
+import androidx.navigation.fragment.findNavController
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
-class CookbookFragment : Fragment() {
+class CookbookFragment : Fragment(), ItemClickListener {
 
     private val binding = FragmentBindingDelegate<FragmentCookbookBinding>(this)
     private val model: CookbookFragmentViewModel by viewModels { CookbookFragmentViewModel.Factory }
+    private val adapter: CookBookAdapter by lazy { CookBookAdapter(this) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,13 +38,29 @@ class CookbookFragment : Fragment() {
                 .flowWithLifecycle(viewLifecycleOwner.lifecycle)
                 .collect(::onRecipeListUpdated)
         }
+        binding.withBinding {
+            cookbookToolbar.setNavigationOnClickListener {
+                MaterialAlertDialogBuilder(requireContext())
+                    .setMessage(getString(R.string.close_app_message))
+                    .setPositiveButton(R.string.yes_btn) { _, _ ->
+                        requireActivity().finishAndRemoveTask()
+                    }
+                    .setNegativeButton(R.string.no_btn, null)
+                    .show()
+            }
+        }
     }
 
     private fun setupRecyclerView() = binding.withBinding {
-        // Setup RecyclerView
+        cookbookList.adapter = adapter
     }
 
     private fun onRecipeListUpdated(recipeList: List<RecipeListItem>) {
-        // Handle recipe list
+        adapter.submitList(recipeList)
+    }
+
+    override fun itemClicked(id: Int) {
+        val action = CookbookFragmentDirections.actionCookbookToRecipe(id)
+        findNavController().navigate(action)
     }
 }

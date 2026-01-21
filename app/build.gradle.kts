@@ -46,8 +46,14 @@ dependencies {
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.androidx.navigation.ui)
     implementation(libs.material)
+    implementation(libs.glide)
+    implementation(libs.androidx.recyclerview)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     testImplementation(libs.junit)
     testImplementation(libs.kotlin.coroutines.test)
+    annotationProcessor(libs.compiler)
 }
+
+
+
