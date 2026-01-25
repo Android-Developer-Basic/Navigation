@@ -1,6 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:fillViewport="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        style="@style/AppToolbarStyle"
+        android:id="@+id/toolbar"
+        app:navigationIcon="@drawable/arrow_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <ImageView
+            android:id="@+id/refuseBin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginHorizontal="14dp"
+            android:contentDescription="Icon"
+            android:src="@drawable/trash_icon"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop" />
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <ImageView
+        android:id="@+id/recipeImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:src="@tools:sample/avatars"
+        android:adjustViewBounds="true"
+        android:layout_gravity="center"
+        android:background="@drawable/shape_recipe_image"
+        android:clipToOutline="true"
+        android:layout_margin="14dp"/>
+
+    <TextView
+        android:id="@+id/recipeTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/purple"
+        android:textSize="25sp"
+        tools:text="Recipe title"
+        android:paddingHorizontal="14dp"/>
+
+    <TextView
+        android:id="@+id/recipeDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/gray_dark"
+        android:textSize="19sp"
+        tools:text="This is short description"
+        android:paddingHorizontal="14dp"
+        android:paddingVertical="10dp"/>
+
+    <TextView
+        android:id="@+id/recipeDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/brown"
+        android:textSize="19sp"
+        tools:text="Cook the pasta in a large pot of boiling salted water until al dente Meanwhile, whisk the eggs and Parmesan together in a bowl."
+        />
+
+    </LinearLayout>
+
+    </ScrollView>

@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Cookbook</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="Delete">Delete</string>
+    <string name="Choice">Do you want to delete recipe %s?</string>
+    <string name="Ok">ОК</string>
+    <string name="Cancel">Cancel</string>
 </resources>
