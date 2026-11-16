@@ -2,4 +2,12 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="cookbook_background">#FFF7F2FA</color>
+    <color name="cookbook_primary">#FF6750A4</color>
+    <color name="cookbook_on_primary">#FFFFFFFF</color>
+    <color name="cookbook_surface">#FFFFFBFE</color>
+    <color name="cookbook_on_surface">#FF1C1B1F</color>
+    <color name="cookbook_on_surface_variant">#FF49454F</color>
+    <color name="cookbook_outline">#FFE7E0EC</color>
+    <color name="cookbook_image_placeholder">#FFE8DEF8</color>
 </resources>

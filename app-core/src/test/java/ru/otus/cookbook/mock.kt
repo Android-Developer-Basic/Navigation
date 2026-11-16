@@ -4,7 +4,7 @@ import ru.otus.cookbook.data.Recipe
 import ru.otus.cookbook.data.RecipeCategory
 
 val mockRecipes = listOf(
-    Recipe (
+    Recipe(
         id = 1,
         title = "Recipe 1",
         description = "Description 1",
@@ -12,7 +12,7 @@ val mockRecipes = listOf(
         imageUrl = "https://example.com/image1.jpg",
         steps = emptyList()
     ),
-    Recipe (
+    Recipe(
         id = 2,
         title = "Recipe 2",
         description = "Description 2",
@@ -20,7 +20,7 @@ val mockRecipes = listOf(
         imageUrl = "https://example.com/image2.jpg",
         steps = emptyList()
     ),
-    Recipe (
+    Recipe(
         id = 3,
         title = "Recipe 3",
         description = "Description 3",
@@ -30,7 +30,7 @@ val mockRecipes = listOf(
     )
 )
 
-val newRecipe = Recipe (
+val newRecipe = Recipe(
     id = 0,
     title = "Recipe 4",
     description = "Description 4",

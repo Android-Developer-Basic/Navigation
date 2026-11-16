@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Cookbook</string>
+    <string name="delete">Delete</string>
+    <string name="delete_recipe_message">Are you sure you want to delete %1$s?</string>
+    <string name="recipe_image">Recipe image</string>
+    <string name="cd_delete_recipe">Delete recipe</string>
 </resources>
