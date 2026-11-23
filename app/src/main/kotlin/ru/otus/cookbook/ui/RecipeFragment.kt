@@ -6,16 +6,25 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.MutableCreationExtras
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import coil.load
+import coil.size.Scale
 import kotlinx.coroutines.launch
+import ru.otus.cookbook.R
 import ru.otus.cookbook.data.Recipe
 import ru.otus.cookbook.databinding.FragmentRecipeBinding
 
 class RecipeFragment : Fragment() {
 
-    private val recipeId: Int get() = TODO("Use Safe Args to get the recipe ID: https://developer.android.com/guide/navigation/use-graph/pass-data#Safe-args")
+    private val args: RecipeFragmentArgs by navArgs()
+
+    private val recipeId: Int get() = args.recipeId
 
     private val binding = FragmentBindingDelegate<FragmentRecipeBinding>(this)
     private val model: RecipeFragmentViewModel by viewModels(
@@ -38,11 +47,66 @@ class RecipeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupToolbar()
+        observeDeleteResult()
         viewLifecycleOwner.lifecycleScope.launch {
             model.recipe
                 .flowWithLifecycle(viewLifecycleOwner.lifecycle)
                 .collect(::displayRecipe)
         }
+    }
+
+    private fun setupToolbar() = binding.withBinding {
+        toolbar.setNavigationOnClickListener {
+            findNavController().navigateUp()
+        }
+        toolbar.setOnMenuItemClickListener { item ->
+            if (item.itemId == R.id.action_delete) {
+                openDeleteDialog()
+                true
+            } else {
+                false
+            }
+        }
+    }
+
+    /**
+     * Same pattern as the webinar / Navigation docs:
+     * read dialog result from SavedStateHandle when this back stack entry resumes.
+     */
+    private fun observeDeleteResult() {
+        val navBackStackEntry = findNavController().getBackStackEntry(R.id.recipeFragment)
+
+        val observer = object : DefaultLifecycleObserver {
+            override fun onResume(owner: LifecycleOwner) {
+                if (!navBackStackEntry.savedStateHandle.contains(DeleteRecipeDialogFragment.DELETE_RESULT)) {
+                    return
+                }
+                val confirmed = navBackStackEntry.savedStateHandle.get<Boolean>(
+                    DeleteRecipeDialogFragment.DELETE_RESULT
+                )
+                navBackStackEntry.savedStateHandle.remove<Boolean>(
+                    DeleteRecipeDialogFragment.DELETE_RESULT
+                )
+                if (confirmed == true) {
+                    deleteRecipe()
+                    findNavController().popBackStack(R.id.cookbookFragment, false)
+                }
+            }
+        }
+
+        navBackStackEntry.lifecycle.addObserver(observer)
+        viewLifecycleOwner.lifecycle.addObserver(object : DefaultLifecycleObserver {
+            override fun onDestroy(owner: LifecycleOwner) {
+                navBackStackEntry.lifecycle.removeObserver(observer)
+            }
+        })
+    }
+
+    private fun openDeleteDialog() {
+        findNavController().navigate(
+            RecipeFragmentDirections.actionRecipeFragmentToDeleteRecipeDialogFragment(getTitle())
+        )
     }
 
     /**
@@ -52,8 +116,19 @@ class RecipeFragment : Fragment() {
         return model.recipe.value.title
     }
 
-    private fun displayRecipe(recipe: Recipe) {
-        // Display the recipe
+    private fun displayRecipe(recipe: Recipe) = binding.withBinding {
+        toolbar.title = recipe.title
+        title.text = recipe.title
+        description.text = recipe.description
+        steps.text = recipe.steps
+            .mapIndexed { index, step -> "${index + 1}. $step" }
+            .joinToString(separator = "\n\n")
+        image.load(recipe.imageUrl) {
+            crossfade(true)
+            scale(Scale.FILL)
+            placeholder(R.drawable.ic_recipe_detail_placeholder)
+            error(R.drawable.ic_recipe_detail_placeholder)
+        }
     }
 
     private fun deleteRecipe() {
