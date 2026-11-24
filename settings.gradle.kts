@@ -21,5 +21,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "Cookbook"
 include(":app")
+include(":app-compose")
 include(":app-core")
 include(":webinar")
