@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Cookbook Compose</string>
+    <string name="delete">Delete</string>
+    <string name="delete_recipe_message">Are you sure you want to delete %1$s?</string>
+    <string name="recipe_image">Recipe image</string>
+    <string name="cd_delete_recipe">Delete recipe</string>
+    <string name="cd_navigate_back">Navigate back</string>
+</resources>
